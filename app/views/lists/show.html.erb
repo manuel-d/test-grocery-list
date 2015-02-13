@@ -1,0 +1,12 @@
+<p>
+  <strong>Title:</strong>
+  <%= @list.title %>
+</p>
+ 
+<p>
+  <strong>Text:</strong>
+  <%= @list.text %>
+</p>
+
+<%= link_to 'Back', lists_path %>
+<%= link_to 'Edit', edit_list_path(@list) %>

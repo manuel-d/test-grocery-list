@@ -1,0 +1,23 @@
+<h1>Hello, world!</h1>
+<%= link_to 'Grocery lists', controller: 'lists' %>
+<%= link_to 'New list', new_list_path %>
+
+<h1> Listing lists</h1>
+<table>
+	<tr>
+		<th>Title</th>
+		<th>Text</th>
+		<th colspan="2"></th>
+	</tr>
+	
+	<% @lists.each do |list| %>
+		<tr>
+			<td><%= list.title %></td>
+			<td><%= list.text %></td>
+			<td><%= link_to 'Show', list_path(list) %></td>
+			<td><%= link_to 'Edit', edit_list_path(list) %></td>
+			<td><%= link_to 'Delete', list_path(list), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		</tr>
+	<% end %>
+</table>
+		
