@@ -55,5 +55,5 @@ Rails.application.routes.draw do
   #   end
   get 'pages/home' => 'pages#home'
   resources :lists
-  root 'pages#home'
+  root 'lists#index'
 end
