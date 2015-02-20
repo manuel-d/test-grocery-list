@@ -14,7 +14,7 @@
 	<table class="table table-condensed table-hover">
 		<thead>
 			<tr>
-				<th>Name</th>
+				<th>Date and Name</th>
 				<th>Content</th>
 				<th>Actions</th>
 			</tr>
@@ -22,7 +22,7 @@
 		<tbody>
 			<% @lists.each do |list| %>
 				<tr>
-					<td class="col-xs-3"><%= list.title  %></td>
+					<td class="col-xs-3"><small><%= list.updated_at.localtime.strftime("%d/%m/%Y %H:%M") %></small> <%= list.title %></td>
 					<td class="col-xs-7"><%= list.text %></td>
 					<td class="col-xs-2"><%= link_to 'Show', list_path(list), class: 'btn btn-primary btn-xs' %>
 					<%= link_to 'Edit', edit_list_path(list), class: 'btn btn-warning btn-xs' %>

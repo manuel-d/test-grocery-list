@@ -1,6 +1,6 @@
 class ListsController < ApplicationController
 
-http_basic_authenticate_with name: "Manuel", password: "Maura1979", except: [:index, :show]
+http_basic_authenticate_with name: "Manuel", password: "Maura1979", except: [] #except: [:index, :show]
 
 def index
 	@lists = List.all
@@ -20,7 +20,6 @@ end
 
 def create
 	@list = List.new(list_params)
-	
 	if @list.save
 		redirect_to @list
 	else
