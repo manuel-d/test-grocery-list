@@ -1,6 +1,6 @@
 class ListsController < ApplicationController
 
-http_basic_authenticate_with name: "Manuel", password: "Maura1979", except: [] #except: [:index, :show]
+#http_basic_authenticate_with name: "", password: "", except: [] #except: [:index, :show]
 
 def index
 	@lists = List.all
