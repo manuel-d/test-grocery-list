@@ -1,13 +1,24 @@
 class ListsController < ApplicationController
-
 #http_basic_authenticate_with name: "", password: "", except: [] #except: [:index, :show]
+before_action :get_list, only: [:edit, :update, :destroy]
+before_action :check_auth, only: [:edit, :update, :destroy]
+def check_auth
+	if current_user.id != @list.user_id
+		flash[:notice] = "Sorry, you can't edit this list"
+		redirect_to(list_path)
+	end
+end
+
+def get_list
+	@list = List.find(params[:id])
+end
 
 def index
-	@lists = List.all
+	@lists = current_user.lists.all
 end
 
 def show
-	@list = List.find(params[:id])
+	@list = current_user.lists.find(params[:id])
 end
 
 def new
@@ -15,11 +26,11 @@ def new
 end
 
 def edit
-	@list = List.find(params[:id])
-end 
+end
 
 def create
 	@list = List.new(list_params)
+	@list.user_id = current_user.id
 	if @list.save
 		redirect_to @list
 	else
@@ -28,8 +39,6 @@ def create
 end
 
 def update
-	@list = List.find(params[:id])
-	
 	if @list.update(list_params)
 		redirect_to @list
 	else
@@ -38,9 +47,7 @@ def update
 end
 
 def destroy
-	@list = List.find(params[:id])
 	@list.destroy
-	
 	redirect_to @list
 end
 
