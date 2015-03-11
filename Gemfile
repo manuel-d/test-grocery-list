@@ -34,6 +34,8 @@ gem 'autoprefixer-rails'
 
 gem 'devise'
 
+gem 'google-webfonts-rails'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
